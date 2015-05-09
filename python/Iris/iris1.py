@@ -25,3 +25,19 @@ for t in range(3):
                 features[target == t,1],
                 marker=marker,
                 c=c)
+
+#numpy indexing
+labels = target_names[target]
+
+#petal length is at position 2
+plength = features[:, 2]
+
+#bool array
+is_setosa = (labels == 'setosa')
+
+max_setosa = plength[is_setosa ].max()
+min_non_setosa = plength[~is_setosa].min()
+
+#print data
+print('Maximum of setosa: {0}'.format(max_setosa))
+print('Minimum of others: {0}'.format(min_non_setosa))
