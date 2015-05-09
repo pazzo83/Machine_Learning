@@ -110,10 +110,12 @@ def cross_validation(features, labels):
         training = np.ones(len(features), bool)
         training[ei] = False
         testing = ~training
-        model = fit_model(features[training], labels)
+        model = fit_model(features[training], labels[training])
         predictions = predict(model, features[training])
-        correct += np.sum(predictions == labels)
+        correct += np.sum(predictions == labels[training])
     acc = correct/float(len(features))
 
     return acc
 
+test1 = cross_validation(features, is_virginica)
+print test1
